@@ -1,0 +1,22 @@
+<head>
+  <title>I use gentoo btw</title>
+  <script>
+  function insert(){document.getElementById("a").innerHTML += "<tr><td>new</td><td>new</td></tr>\n"}
+  function remove(){
+    let a=document.getElementById("a").innerHTML.split("\n");
+    try{while(!a.pop().includes("<td>")){}}catch(TypeError){return;}
+    document.getElementById("a").innerHTML=a.join("\n");
+    console.log(a);
+  }
+  </script>
+</head>
+<body>
+  <table style="border: 1px solid black;" id="a">
+    <tr><td>b</td><td>a</td></tr>
+    <tr><td>b</td><td>a</td></tr>
+    
+  </table>
+  <button type="button" onclick="insert()">insert</button>
+  <button type="button" onclick="remove()">remove</button>
+</body>
+
