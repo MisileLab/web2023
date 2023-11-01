@@ -1,46 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <style>
-        div {
-            width: 100px;
-            height: 100px;
-            border: 1px solid black;
-            margin: 10px;
-            float: left;
-            padding: 30px;
-            text-align: center;
-            background-color: lightgreen;
-        }
+      div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        margin: 10px;
+        float: left;
+        padding: 30px;
+        text-align: center;
+        background-color: lightgreen;
+      }
+      activated {
+        background-color: red;
+      }
     </style>
-</head>
-
-<body>
-    <div onmouseenter="enter1(this)" onmouseleave="leave(this)"> </div>
-    <div onmouseenter="enter2(this)" onmouseleave="leave(this)"> </div>
-    <div onmouseenter="enter3(this)" onmouseleave="leave(this)"> </div>
     <script>
-        let x = 0; let y = 0; let z = 0;
-        function enter1(obj) {
-            x++;
-            obj.innerHTML = "mouseenter:" + x;
-            obj.style.background = "yellow";
+      function changeClass() {
+        for (let i = 0; i < document.getElementsByTagName("div").length; i++) {
+          document.getElementsByTagName("div")[i].classList.remove("activated");
         }
-        function enter2(obj) {
-            y++;
-            obj.innerHTML = "mouseenter:" + y;
-            obj.style.background = "yellow";
-        }
-        function enter3(obj) {
-            z++;
-            obj.innerHTML = "mouseenter:" + z;
-            obj.style.background = "yellow";
-        }
-        function leave(obj) {
-            obj.style.background = "lightgreen";
-        }
+        var randomelement =
+          document.getElementsByTagName("div")[
+            Math.floor(
+              Math.random() * document.getElementsByTagName("div").length,
+            )
+          ];
+        randomelement.classList.add("activated");
+      }
+      setInterval(changeClass, 1000);
     </script>
-</body>
+  </head>
 
+  <body>
+    <div onmouseenter="enter1(this)" onmouseleave="leave(this)"></div>
+    <div onmouseenter="enter2(this)" onmouseleave="leave(this)"></div>
+    <div onmouseenter="enter3(this)" onmouseleave="leave(this)"></div>
+    <script>
+      let x = 0; let y = 0; let z = 0;
+      function enter1(obj) {
+          if (!obj.classList.contains("activated")) {
+          return;
+        }
+          x++;
+          obj.innerHTML = "mouseenter:" + x;
+          obj.style.background = "yellow";
+      }
+      function enter2(obj) {
+        if (!obj.classList.contains("activated")) {
+          return
+          }
+
+          y++;
+          obj.innerHTML = "mouseenter:" + y;
+          obj.style.background = "yellow";
+      }
+      function enter3(obj) {
+        if (!obj.classList.contains("activated")) {
+          return
+        }
+          z++;
+          obj.innerHTML = "mouseenter:" + z;
+          obj.style.background = "yellow";
+      }
+      function leave(obj) {
+          obj.style.background = "lightgreen";
+      }
+    </script>
+  </body>
 </html>
