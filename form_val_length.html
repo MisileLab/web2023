@@ -1,9 +1,11 @@
 ﻿<script>
     function checkLength(elem, min, max) {
         let s = elem.value;
-//
+        if (min > s.length || s.length > max) {
+        alert("문자열의 길이가 너무 적거나 너무 많습니다.");
+        elem.focus();
+      }
         }
-    }
 </script>
 <form>
     이름(6-8 문자): <input type='text' id='name' />

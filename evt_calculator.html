@@ -1,20 +1,19 @@
 ﻿<html>
 <head>
-
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@12.0/lib/browser/math.min.js"></script>
     <script>
         let expression="";
 
-        function add(//) {
+        function add(character) {
             expression = expression + character;
-
-                       //
+            display.value = expression;
         }
         function compute() {
-            document.getElementById("display").value = //;
+          try{document.getElementById("display").value = math.evaluate(expression);}catch(e){alert("직접 해보셈");}
         }
         function clearDisplay() {
             expression = "";
-            //
+            display.value = expression;
         }
     </script>
 
