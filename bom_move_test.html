@@ -6,13 +6,10 @@
     function openWindow() {
         w = window.open(' ', ' ', 'width=200, height=100');
         w.document.write("<p>오늘 다음과 같은 상품을 싸게 팝니다.</p>");
-       //
-
     }
-
     function moveWindow() {
-       //
-        w.focus();
+        w.moveBy(100, 100); // 상대적 위치 이동
+        w.focus(); // window focus
     }
 </script>
 </head>
